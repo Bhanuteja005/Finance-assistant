@@ -1,0 +1,53 @@
+# Core Framework Dependencies
+streamlit==1.29.0
+fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.5.0
+
+# Agent Frameworks
+langchain==0.1.0
+langchain-community==0.0.10
+langchain-google-genai==0.0.5  # Gemini integration for LangChain
+google-generativeai==0.3.1     # Google Gemini API
+crewai==0.1.0
+langgraph==0.0.20
+
+# Data & ML
+pandas==2.1.4
+numpy==1.24.3
+scikit-learn==1.3.2
+faiss-cpu==1.7.4
+pinecone-client==2.2.4
+sentence-transformers==2.2.2
+
+# Financial Data APIs
+yfinance==0.2.18
+alpha-vantage==2.3.1
+sec-edgar-downloader==4.9.0
+beautifulsoup4==4.12.2
+requests==2.31.0
+selenium==4.15.2
+
+# Voice Processing
+vosk==0.3.45               # Free offline speech recognition
+pydub==0.25.1
+gtts==2.4.0                # Google Text-to-Speech (free)
+speechrecognition==3.10.0
+pyaudio==0.2.11
+
+# Vector Store & Embeddings
+chromadb==0.4.18
+tiktoken==0.5.2
+
+# Utilities
+python-dotenv==1.0.0
+aiohttp==3.9.1
+asyncio==3.4.3
+logging==0.4.9.6
+pytest==7.4.3
+docker==6.1.3
+
+# Streamlit Components
+streamlit-chat==0.1.1
+streamlit-audio-recorder==0.0.8
+plotly==5.17.0

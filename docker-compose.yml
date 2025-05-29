@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  orchestrator:
+    build: .
+    command: python orchestrator/main.py
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ALPHA_VANTAGE_API_KEY=${ALPHA_VANTAGE_API_KEY}
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+    volumes:
+      - ./logs:/app/logs
+      - ./vector_store:/app/vector_store
+    depends_on:
+      - api-agent
+      - retriever-agent
+      - language-agent
+      - voice-agent
+
+  api-agent:
+    build: .
+    command: python agents/api_agent.py
+    ports:
+      - "8001:8001"
+    environment:
+      - ALPHA_VANTAGE_API_KEY=${ALPHA_VANTAGE_API_KEY}
+
+  retriever-agent:
+    build: .
+    command: python agents/retriever_agent.py
+    ports:
+      - "8003:8003"
+    environment:
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+    volumes:
+      - ./vector_store:/app/vector_store
+
+  language-agent:
+    build: .
+    command: python agents/language_agent.py
+    ports:
+      - "8005:8005"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+  voice-agent:
+    build: .
+    command: python agents/voice_agent.py
+    ports:
+      - "8006:8006"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+  streamlit-app:
+    build: .
+    command: streamlit run streamlit_app/main.py --server.port=8501 --server.address=0.0.0.0
+    ports:
+      - "8501:8501"
+    depends_on:
+      - orchestrator
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
