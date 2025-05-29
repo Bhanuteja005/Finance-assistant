@@ -63,14 +63,15 @@ class APIAgent:
         """Get earnings surprises for given symbols."""
         try:
             earnings_data = []
-            
             for symbol in symbols:
                 earnings = await self.market_client.get_earnings_data(symbol)
+                # Clean up out-of-range float values for JSON
+                for k, v in list(earnings.items()):
+                    if isinstance(v, float) and (np.isnan(v) or np.isinf(v)):
+                        earnings[k] = None
                 if "error" not in earnings and earnings.get('surprise_percent') is not None:
                     earnings_data.append(earnings)
-            
             return earnings_data
-            
         except Exception as e:
             agent_logger.error(f"Error fetching earnings surprises: {e}")
             raise HTTPException(status_code=500, detail=str(e))

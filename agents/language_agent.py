@@ -8,6 +8,7 @@ from langchain.chains import LLMChain
 from crewai import Agent, Task, Crew
 from utils.logger import agent_logger
 from config import config
+import asyncio
 
 app = FastAPI(title="Language Agent", description="Handles LLM operations and text generation")
 
@@ -123,7 +124,8 @@ class LanguageAgent:
                 verbose=True
             )
             
-            result = crew.kickoff()
+            # Use asyncio.to_thread to run blocking crew.kickoff in a thread
+            result = await asyncio.to_thread(crew.kickoff)
             
             # Synthesize the final brief
             synthesis_prompt = f"""

@@ -2,6 +2,21 @@
 
 A sophisticated multi-agent finance assistant that delivers spoken market briefs via a Streamlit app. The system implements advanced data-ingestion pipelines, vector-based RAG, and orchestrated specialized agents via FastAPI microservices.
 
+
+## 📸 Example Outputs
+
+Below are example screenshots of the Multi-Agent Finance Assistant in action:
+
+| Screenshot | Description |
+|------------|-------------|
+| ![Screenshot 1](outputs/Screenshot%202025-05-29%20151523.png) | Market brief or dashboard output |
+| ![Screenshot 2](outputs/Screenshot%202025-05-29%20151531.png) | Portfolio analytics or query result |
+| ![Screenshot 3](outputs/Screenshot%202025-05-29%20151540.png) |  market data |
+| ![Screenshot 4](outputs/Screenshot%202025-05-29%20151724.png) |  Additional dashboard or analytics |
+| ![Screenshot 5](outputs/Screenshot%202025-05-29%20151732.png) | view Voice query or system status |
+
+
+
 ## 🏗️ Architecture
 
 ### Agent Roles
@@ -205,55 +220,3 @@ Access interactive API docs at: `http://localhost:8000/docs`
 - Agent status dashboard in Streamlit
 - Automatic health checks
 - Error tracking and reporting
-
-## 🚀 Deployment
-
-### Streamlit Cloud
-\`\`\`bash
-# Deploy to Streamlit Cloud
-streamlit run streamlit_app/main.py
-\`\`\`
-
-### Heroku
-\`\`\`bash
-# Deploy to Heroku
-git push heroku main
-\`\`\`
-
-### AWS/GCP
-- Use Docker containers
-- Set up load balancer
-- Configure environment variables
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🆘 Support
-
-For issues and support:
-1. Check the troubleshooting section
-2. Review logs in the `logs/` directory
-3. Open an issue on GitHub
-4. Contact the development team
-
-## 🔮 Future Enhancements
-
-- [ ] Real-time portfolio tracking
-- [ ] Advanced sentiment analysis
-- [ ] Multi-language support
-- [ ] Mobile app interface
-- [ ] Advanced risk modeling
-- [ ] Integration with trading platforms
-
----
-
-**Built with ❤️ using open-source technologies**
